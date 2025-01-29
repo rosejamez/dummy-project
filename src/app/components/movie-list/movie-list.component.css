@@ -1,0 +1,30 @@
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  
+  .movie-img {
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  /* Modal Styling */
+  .modal {
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-dialog {
+    max-width: 500px;
+  }
+  
