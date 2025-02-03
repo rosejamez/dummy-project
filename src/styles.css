@@ -3,4 +3,7 @@ body {
     background-color: #f8f9fa;
     font-family: 'Arial', sans-serif;
   }
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
   

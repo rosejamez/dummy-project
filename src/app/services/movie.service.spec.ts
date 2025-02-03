@@ -1,16 +1,25 @@
-import { TestBed } from '@angular/core/testing';
+// movie.service.ts
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
-import { MovieService } from './movie.service';
+@Injectable({
+  providedIn: 'root',
+})
+export class MovieService {
+  constructor() {}
 
-describe('MovieService', () => {
-  let service: MovieService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MovieService);
-  });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+  readJsonFile(file: File): Observable<any[]> {
+    return new Observable((observer) => {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        try {
+          const jsonData = JSON.parse(event.target.result);
+          observer.next(jsonData);
+        } catch (error) {
+          observer.error('Error parsing JSON');
+        }
+      };
+      reader.readAsText(file); // Read the file as text
+    });
+  }
+}
