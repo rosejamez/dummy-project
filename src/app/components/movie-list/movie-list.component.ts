@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   providers: [MovieService], // ✅ Ensure service is provided
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css'],
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class MovieListComponent implements OnInit {
   movies: any[] = [];
   selectedMovie: any = null;
+  searchQuery: string = '';
 
   constructor(private movieService: MovieService) {}
 
@@ -26,5 +28,10 @@ export class MovieListComponent implements OnInit {
 
   closeReview() {
     this.selectedMovie = null; // ✅ Close pop-up
+  }
+  get filteredMovies() {
+    return this.movies.filter((movie) => 
+      movie.title.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 }

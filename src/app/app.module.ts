@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { MovieListComponent } from './components/movie-list/movie-list.component';
-import { CommonModule } from '@angular/common'; // ✅ Add this!
+import { FormsModule } from '@angular/forms';  // Make sure this line is added
 
 @NgModule({
-  declarations: [AppComponent, MovieListComponent],
-  imports: [BrowserModule, CommonModule], // ✅ Import here
+  declarations: [AppComponent],
+  imports: [BrowserModule, FormsModule],  // Include FormsModule here
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
